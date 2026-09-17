@@ -27,15 +27,31 @@ dotfiles/
 
 ### 1. Prerequisites (macOS)
 
-Install Homebrew and the core CLI dependencies:
+1. **Xcode Command Line Tools** (provides `make` and C compilers for native plugins):
+   ```bash
+   xcode-select --install
+   ```
 
-```bash
-# Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+2. **Homebrew**:
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
 
-# Neovim & fast search utilities (used by Telescope and file finders)
-brew install neovim ripgrep fd
-```
+3. **Core CLI Tools via Homebrew**:
+   ```bash
+   brew install neovim ripgrep fd tree-sitter-cli
+   ```
+   * **`neovim`**: Modern editor runtime (`>= 0.12`).
+   * **`ripgrep`**: Fast text search across files (`<leader>fg`).
+   * **`fd`**: Fast file finding (`<leader>ff`).
+   * **`tree-sitter-cli`**: Required by Neovim 0.12+ for compiling language syntax parsers.
+
+4. **Language Runtimes (Required by Mason to run Language Servers & Formatters)**:
+   ```bash
+   brew install node go
+   ```
+   * **`node` / `npm`**: Required by Mason for `ts_ls`, `bashls`, `jsonls`, `yamlls`, `html`, `cssls`, and `prettier`.
+   * **`go`**: Required to build and run `gopls` and `goimports`.
 
 ### 2. Clone Repository
 

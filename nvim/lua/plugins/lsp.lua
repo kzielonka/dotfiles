@@ -40,6 +40,8 @@ return {
       },
     })
 
+    vim.keymap.set("n", "<leader>cm", "<cmd>Mason<CR>", { desc = "Mason Package Manager" })
+
     -- Capabilities for autocompletion
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -81,10 +83,17 @@ return {
       "shfmt",
       "goimports",
     })
-    require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+    require("mason-tool-installer").setup({
+      ensure_installed = ensure_installed,
+      auto_update = false,
+      run_on_start = true,
+      start_delay = 500,
+    })
 
     local lspconfig = require("lspconfig")
     require("mason-lspconfig").setup({
+      ensure_installed = vim.tbl_keys(servers or {}),
+      automatic_installation = true,
       handlers = {
         function(server_name)
           local server_config = servers[server_name] or {}

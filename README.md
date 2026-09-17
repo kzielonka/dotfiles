@@ -127,6 +127,7 @@ Leader key is set to `<Space>`.
 | `<leader>ca` | Code actions (import fixes, quick repairs) |
 | `<leader>rn` | Rename symbol across project |
 | `<leader>cf` | Format code manually (auto-formats on save) |
+| `<leader>cm` | Open Mason package manager dashboard |
 
 ### 🌿 Git & Version Control (Gitsigns)
 | Shortcut | Action |

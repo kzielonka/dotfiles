@@ -54,7 +54,7 @@ Install all required CLI tools, language runtimes, and dependencies with a singl
 brew bundle --file=~/dotfiles/Brewfile
 ```
 
-*Installs: `neovim`, `tmux`, `ripgrep`, `fd`, `tree-sitter-cli`, `git`, `gh`, `node`, `go`.*
+*Installs: `neovim`, `tmux`, `ripgrep`, `fd`, `tree-sitter-cli`, `git`, `gh`, `nvm` (Node Version Manager), `go`.*
 
 ### 4. Symlink Configurations
 

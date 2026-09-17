@@ -13,6 +13,6 @@ brew "tree-sitter-cli"
 brew "git"
 brew "gh"
 
-# Language Runtimes (LSP & Formatters)
-brew "node"
+# Language Runtimes & Version Managers
+brew "nvm"
 brew "go"

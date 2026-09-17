@@ -13,6 +13,7 @@ This repository is kept public on GitHub to enable reproducible, automated setup
 ```text
 dotfiles/
 ├── .gitignore
+├── Brewfile               # Homebrew dependencies manifest
 ├── README.md
 ├── nvim/                  # Neovim configuration (symlinked to ~/.config/nvim)
 │   ├── init.lua
@@ -39,30 +40,23 @@ dotfiles/
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
-3. **Core CLI Tools via Homebrew**:
-   ```bash
-   brew install neovim tmux ripgrep fd tree-sitter-cli
-   ```
-   * **`neovim`**: Modern editor runtime (`>= 0.12`).
-   * **`tmux`**: Terminal multiplexer.
-   * **`ripgrep`**: Fast text search across files (`<leader>fg`).
-   * **`fd`**: Fast file finding (`<leader>ff`).
-   * **`tree-sitter-cli`**: Required by Neovim 0.12+ for compiling language syntax parsers.
-
-4. **Language Runtimes (Required by Mason to run Language Servers & Formatters)**:
-   ```bash
-   brew install node go
-   ```
-   * **`node` / `npm`**: Required by Mason for `ts_ls`, `bashls`, `jsonls`, `yamlls`, `html`, `cssls`, and `prettier`.
-   * **`go`**: Required to build and run `gopls` and `goimports`.
-
 ### 2. Clone Repository
 
 ```bash
 git clone https://github.com/<your-username>/dotfiles.git ~/dotfiles
 ```
 
-### 3. Symlink Configurations
+### 3. Install Packages via Brewfile
+
+Install all required CLI tools, language runtimes, and dependencies with a single command:
+
+```bash
+brew bundle --file=~/dotfiles/Brewfile
+```
+
+*Installs: `neovim`, `tmux`, `ripgrep`, `fd`, `tree-sitter-cli`, `git`, `gh`, `node`, `go`.*
+
+### 4. Symlink Configurations
 
 Create symlinks from your central dotfiles repository:
 
@@ -76,7 +70,7 @@ mkdir -p ~/.config/tmux
 ln -s ~/dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
 ```
 
-### 4. Launch Neovim
+### 5. Launch Neovim
 
 ```bash
 nvim

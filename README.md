@@ -2,6 +2,8 @@
 
 Personal dotfiles and development environment configurations for macOS, maintained by Krzysztof Zielonka.
 
+> 🤖 **Note:** This configuration, modular architecture, and documentation were crafted and structured with the assistance of AI.
+
 This repository is kept public on GitHub to enable reproducible, automated setups across new machines and clean disaster recovery.
 
 ---

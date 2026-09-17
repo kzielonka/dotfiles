@@ -1,8 +1,12 @@
+# Terminal Emulator & GUI Applications
+cask "iterm2"
+
 # Core Editor & Multiplexer
 brew "neovim"
 brew "tmux"
 
-# Fast Search Utilities (Telescope & Finders)
+# File Managers & Terminal Utilities
+brew "midnight-commander"
 brew "ripgrep"
 brew "fd"
 

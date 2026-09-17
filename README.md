@@ -14,11 +14,13 @@ This repository is kept public on GitHub to enable reproducible, automated setup
 dotfiles/
 ├── .gitignore
 ├── README.md
-└── nvim/                  # Neovim configuration (symlinked to ~/.config/nvim)
-    ├── init.lua
-    └── lua/
-        ├── config/        # Options, keymaps, autocommands, lazy bootstrap
-        └── plugins/       # Modular plugin specifications
+├── nvim/                  # Neovim configuration (symlinked to ~/.config/nvim)
+│   ├── init.lua
+│   └── lua/
+│       ├── config/        # Options, keymaps, autocommands, lazy bootstrap
+│       └── plugins/       # Modular plugin specifications
+└── tmux/                  # Tmux configuration (symlinked to ~/.tmux.conf & ~/.config/tmux)
+    └── tmux.conf
 ```
 
 ---
@@ -39,9 +41,10 @@ dotfiles/
 
 3. **Core CLI Tools via Homebrew**:
    ```bash
-   brew install neovim ripgrep fd tree-sitter-cli
+   brew install neovim tmux ripgrep fd tree-sitter-cli
    ```
    * **`neovim`**: Modern editor runtime (`>= 0.12`).
+   * **`tmux`**: Terminal multiplexer.
    * **`ripgrep`**: Fast text search across files (`<leader>fg`).
    * **`fd`**: Fast file finding (`<leader>ff`).
    * **`tree-sitter-cli`**: Required by Neovim 0.12+ for compiling language syntax parsers.
@@ -61,11 +64,16 @@ git clone https://github.com/<your-username>/dotfiles.git ~/dotfiles
 
 ### 3. Symlink Configurations
 
-Create the symlink from your central dotfiles to standard configuration paths:
+Create symlinks from your central dotfiles repository:
 
 ```bash
 mkdir -p ~/.config
 ln -s ~/dotfiles/nvim ~/.config/nvim
+
+# Tmux
+ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+mkdir -p ~/.config/tmux
+ln -s ~/dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
 ```
 
 ### 4. Launch Neovim
@@ -154,6 +162,20 @@ Leader key is set to `<Space>`.
 | `<leader>hr` | Reset/discard changes in current git hunk |
 | `<leader>hb` | Toggle git blame line for current line |
 | `<leader>hd` | Open full git diff view against index |
+
+### 🖥️ Tmux (Terminal Multiplexer)
+Prefix key is `Ctrl + b`.
+
+| Shortcut | Action |
+| :--- | :--- |
+| `Prefix + r` | Reload Tmux configuration |
+| `Prefix + \|` | Split pane horizontally (side by side) |
+| `Prefix + -` | Split pane vertically (top and bottom) |
+| `Prefix + h/j/k/l` | Navigate between split panes |
+| `Prefix + H/J/K/L` | Resize pane by 5 cells (repeatable) |
+| `Prefix + [` | Enter Vi scrollback / copy mode |
+| `v` (in copy mode) | Begin text selection |
+| `y` (in copy mode) | Yank selection to macOS system clipboard |
 
 ---
 
